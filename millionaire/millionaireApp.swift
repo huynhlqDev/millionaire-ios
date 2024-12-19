@@ -12,7 +12,7 @@ import SwiftData
 struct millionaireApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Player.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct millionaireApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FirstView()
         }
         .modelContainer(sharedModelContainer)
     }
