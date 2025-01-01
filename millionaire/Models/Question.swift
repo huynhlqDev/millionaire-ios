@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Question {
+struct Question: Codable, Equatable {
     let level: Difficulty
     let question: String
     let answers: [String]
