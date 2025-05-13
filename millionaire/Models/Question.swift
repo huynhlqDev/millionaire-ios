@@ -8,8 +8,7 @@
 import Foundation
 
 struct Question: Codable, Equatable {
-    let level: Difficulty
-    let question: String
-    let answers: [String]
-    let correctAnswer: Int
+    let text: String
+    let options: [String]
+    let correctIndex: Int
 }
