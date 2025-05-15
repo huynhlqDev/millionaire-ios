@@ -34,16 +34,7 @@ struct QuestionView: View {
                 .shadow(color: .black.opacity(0.5), radius: 4, x: 2, y: 2)
         }
         .overlay {
-            ZStack {
-                Circle()
-                    .stroke(.white, lineWidth: 3)
-                    .fill(.white)
-                    .shadow(color: .gray.opacity(0.8), radius: 4, x: 0, y: 2)
-                Text("\(remainingTime)")
-                    .bold()
-                    .font(.title2)
-            }
-            .frame(width: circleSize, height: circleSize)
+            CountdownCircleView(circleSize: circleSize)
             .offset(x: 0, y: -viewHeight/2)
 
         }

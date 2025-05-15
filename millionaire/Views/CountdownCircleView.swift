@@ -1,0 +1,71 @@
+//
+//  CountdownCircleView.swift
+//  millionaire
+//
+//  Created by huynh on 16/5/25.
+//
+
+import SwiftUI
+
+struct CountdownCircleView: View {
+    let totalTime: TimeInterval = 30
+    let circleSize: CGFloat
+    @State private var remainingTime: TimeInterval = 30
+    @State private var timer: Timer? = nil
+
+    var progress: CGFloat {
+        CGFloat(remainingTime / totalTime)
+    }
+
+    var body: some View {
+        ZStack {
+            // Vòng nền
+            Circle()
+                .fill(.white)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 8)
+
+            // Vòng đếm ngược (hiệu ứng cắt trim theo thời gian)
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(timerColor, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                .rotationEffect(.degrees(-90)) // bắt đầu từ đỉnh
+                .animation(.linear(duration: 1), value: progress)
+
+            // Số giây còn lại
+            Text("\(Int(remainingTime))")
+                .font(.title)
+                .bold()
+        }
+        .frame(width: circleSize, height: circleSize)
+        .onAppear {
+            startCountdown()
+        }
+    }
+
+    var timerColor: Color {
+        switch remainingTime {
+        case 0..<5:
+            return .red
+        case 5..<15:
+            return .yellow
+        default:
+            return .green
+        }
+    }
+
+    func startCountdown() {
+        remainingTime = totalTime
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { t in
+            if remainingTime > 0 {
+                remainingTime -= 1
+            } else {
+                t.invalidate()
+            }
+        }
+    }
+}
+
+#Preview {
+    CountdownCircleView(circleSize: 100)
+}
