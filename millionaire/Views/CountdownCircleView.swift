@@ -22,12 +22,13 @@ struct CountdownCircleView: View {
             // Vòng nền
             Circle()
                 .fill(.white)
-                .stroke(Color.gray.opacity(0.2), lineWidth: 8)
+                .stroke(.gray.opacity(0.8), style: StrokeStyle(lineWidth: 8, lineCap: .square))
 
             // Vòng đếm ngược (hiệu ứng cắt trim theo thời gian)
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(timerColor, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                .stroke(timerColor,
+                        style: StrokeStyle(lineWidth: 8, lineCap: .square))
                 .rotationEffect(.degrees(-90)) // bắt đầu từ đỉnh
                 .animation(.linear(duration: 1), value: progress)
 
@@ -44,7 +45,7 @@ struct CountdownCircleView: View {
 
     var timerColor: Color {
         switch remainingTime {
-        case 0..<5:
+        case 0..<10:
             return .red
         case 5..<15:
             return .yellow
