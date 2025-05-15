@@ -15,11 +15,11 @@ struct HexagonButton: Shape {
         
         // Create points
         let points: [CGPoint] = [
-            CGPoint(x: 0.05 * w, y: 0), // Top-left
-            CGPoint(x: 0.95 * w, y: 0), // Top-right
+            CGPoint(x: 0.075 * w, y: 0), // Top-left
+            CGPoint(x: 0.925 * w, y: 0), // Top-right
             CGPoint(x: w, y: 0.5 * h), // Mid-right
-            CGPoint(x: 0.95 * w, y: h), // Bottom-right
-            CGPoint(x: 0.05 * w, y: h), // Bottom-left
+            CGPoint(x: 0.925 * w, y: h), // Bottom-right
+            CGPoint(x: 0.075 * w, y: h), // Bottom-left
             CGPoint(x: 0, y: 0.5 * h) // Mid-left
         ]
         

@@ -39,8 +39,6 @@ struct PlayView: View {
                             gameManager.selectAnswer(option)
                         }
                     )
-
-                    .shadow(color: .black.opacity(0.5), radius: 4, x: 2, y: 2)
                     .disabled(gameManager.selectedAnswer != nil)
                 }
 //                Spacer()

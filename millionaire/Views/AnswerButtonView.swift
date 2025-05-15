@@ -27,24 +27,27 @@ struct AnswerButtonView: View {
                 .frame(width: screenWidth * 0.1, height: 2)
             Button(action: action) {
                 HexagonButton()
-                    .fill(backgroundColor).stroke(.white, lineWidth: 2)
+                    .fill(backgroundColor)
+                    .stroke(.white, lineWidth: 2)
                     .frame(width: buttonFrame.width, height: buttonFrame.height)
                     .overlay {
                         HStack {
-                            Text(optionKey).bold()
+                            Text("\(optionKey).").bold()
+                                .padding(.leading)
                             Text(optionText)
+                                .padding(.leading, 8)
                             Spacer()
                         }
                         .foregroundColor(.white)
                         .padding()
                     }
+                    .shadow(color: .black.opacity(0.7), radius: 4, x: 2, y: 2)
             }
             .frame(width: buttonFrame.width, height: buttonFrame.height)
             Rectangle()
                 .fill(.white)
                 .frame(width: screenWidth * 0.1, height: 2)
         }
-        .shadow(color: .black.opacity(0.5), radius: 4, x: 2, y: 2)
 
     }
     
