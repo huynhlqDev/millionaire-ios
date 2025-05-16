@@ -25,7 +25,7 @@ struct millionaireApp: App {
 
     var body: some Scene {
         WindowGroup {
-            FirstView()
+            PlayView()
         }
         .modelContainer(sharedModelContainer)
     }
