@@ -19,12 +19,12 @@ struct CountdownCircleView: View {
 
     var body: some View {
         ZStack {
-            // Vòng nền
+            // Background circle
             Circle()
                 .fill(.white)
                 .stroke(.gray.opacity(0.8), style: StrokeStyle(lineWidth: 8, lineCap: .square))
 
-            // Vòng đếm ngược (hiệu ứng cắt trim theo thời gian)
+            // Countdown (effectively cuts the application over time)
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(timerColor,
@@ -32,8 +32,9 @@ struct CountdownCircleView: View {
                 .rotationEffect(.degrees(-90)) // bắt đầu từ đỉnh
                 .animation(.linear(duration: 1), value: progress)
 
-            // Số giây còn lại
+            // Time number(s) remaining
             Text("\(Int(remainingTime))")
+                .foregroundStyle(.black)
                 .font(.title)
                 .bold()
         }

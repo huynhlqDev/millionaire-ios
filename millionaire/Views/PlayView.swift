@@ -74,7 +74,7 @@ struct PlayView: View {
         
     }
     
-    // MARK: Methods
+    // MARK: Animation methods
     private func showPlayInfoView() {
         withAnimation() {
             statusLocationX = statusLocationXDidAppear
