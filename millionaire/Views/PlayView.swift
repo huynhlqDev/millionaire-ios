@@ -13,8 +13,11 @@ struct PlayView: View {
     @GestureState private var dragOffset = CGSize.zero
     @StateObject var gameManager = GameManager()
     @State private var showInfoOverlay = false
-    
-    
+
+    @State private var statusLocationX: CGFloat = UIScreen.main.bounds.width
+    private let statusLocationXWillAppear: CGFloat = UIScreen.main.bounds.width
+    private let statusLocationXDidAppear: CGFloat = UIScreen.main.bounds.width*(0.2)
+
     // MARK: Body
     var body: some View {
         ZStack {
@@ -60,7 +63,7 @@ struct PlayView: View {
             
             // Information view
             .overlay {
-                GameStatusView(currentIndex: gameManager.currentIndex, locationX: UIScreen.main.bounds.width*(0.2))
+                GameStatusView(currentIndex: gameManager.currentIndex, locationX: $statusLocationX)
                     .gesture(hiddenPlayInfoWithTouch())
                     .gesture(hiddenPlayInfoWithSwipe())
                     .opacity(showInfoOverlay ? 1 : 0)
@@ -74,6 +77,7 @@ struct PlayView: View {
     // MARK: Methods
     private func showPlayInfoView() {
         withAnimation() {
+            statusLocationX = statusLocationXDidAppear
             showInfoOverlay = true
         }
     }
@@ -93,6 +97,7 @@ struct PlayView: View {
     private func hiddenPlayInfoWithTouch() -> some Gesture {
         TapGesture().onEnded {
             withAnimation() {
+                statusLocationX = statusLocationXWillAppear
                 showInfoOverlay = false
             }
             
@@ -105,6 +110,7 @@ struct PlayView: View {
             let isToRight = value.translation.width > 0
             if isToRight {
                 withAnimation() {
+                    statusLocationX = statusLocationXWillAppear
                     showInfoOverlay = false
                 }
             }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GameStatusView: View {
-    var currentIndex: Int
-    var locationX: CGFloat
+    let currentIndex: Int
+    @Binding var locationX: CGFloat
 
     private let screenSize = UIScreen.main.bounds
     private let screenWidth = UIScreen.main.bounds.width*0.6
@@ -55,7 +55,8 @@ struct GameStatusView: View {
 }
 
 #Preview {
-    GameStatusView(currentIndex: 10, locationX: UIScreen.main.bounds.width*(0.2))
+    @Previewable @State var locationX: CGFloat = UIScreen.main.bounds.width * 0.2
+    return GameStatusView(currentIndex: 10, locationX: $locationX)
 }
 
 
