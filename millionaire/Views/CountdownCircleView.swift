@@ -29,7 +29,7 @@ struct CountdownCircleView: View {
                 .trim(from: 0, to: progress)
                 .stroke(timerColor,
                         style: StrokeStyle(lineWidth: 8, lineCap: .square))
-                .rotationEffect(.degrees(-90)) // bắt đầu từ đỉnh
+                .rotationEffect(.degrees(-90))// Start from the beginning
                 .animation(.linear(duration: 1), value: progress)
 
             // Time number(s) remaining
