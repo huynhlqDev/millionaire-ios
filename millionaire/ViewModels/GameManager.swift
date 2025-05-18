@@ -115,8 +115,9 @@ class GameManager: ObservableObject {
         selectedAnswer = nil
         isAnswerCorrect = nil
         isGameOver = false
-        gameState = .ready
         currentQuestion = questions[currentIndex]
+        usedLifelines.removeAll()
+        gameState = .ready
     }
 
     func useLifeline(_ lifeline: LifelineType) {
