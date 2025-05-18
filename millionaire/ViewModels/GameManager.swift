@@ -34,9 +34,10 @@ class GameManager: ObservableObject {
     @Published var selectedAnswer: AnswerOption? = nil
     @Published var isAnswerCorrect: Bool? = nil
     @Published var isGameOver: Bool? = nil
-    
-    @Published var animateButton = false
-    
+
+    @Published var usedLifelines: Set<LifelineType> = []
+    var currentQuestion: Question?
+
     init() {
         startGame()
     }
@@ -73,14 +74,10 @@ class GameManager: ObservableObject {
         ]
     }
     
-    
-    var currentQuestion: Question {
-        questions[currentIndex]
-    }
-    
     func startGame() {
         gameState = .playing
         questions = getQuestions()
+        currentQuestion = questions[currentIndex]
     }
     
     func selectAnswer(_ answer: AnswerOption) {
@@ -88,7 +85,7 @@ class GameManager: ObservableObject {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self else { return }
-            isAnswerCorrect = ( answer.index == currentQuestion.correctIndex)
+            isAnswerCorrect = ( answer.index == currentQuestion!.correctIndex)
             if isAnswerCorrect == true {
                 sleep(2) // Sleep 2s for success animation perform before go to next question.
                 goToNextQuestion()
@@ -105,6 +102,7 @@ class GameManager: ObservableObject {
         
         if currentIndex + 1 < questions.count {
             currentIndex += 1
+            currentQuestion = questions[currentIndex]
         } else {
             isGameOver = true
             gameState = .win
@@ -118,5 +116,46 @@ class GameManager: ObservableObject {
         isAnswerCorrect = nil
         isGameOver = false
         gameState = .ready
+        currentQuestion = questions[currentIndex]
+    }
+
+    func useLifeline(_ lifeline: LifelineType) {
+        guard !usedLifelines.contains(lifeline) else { return }
+
+        usedLifelines.insert(lifeline)
+
+        switch lifeline {
+        case .fiftyFifty:
+            applyFiftyFifty()
+        case .askAudience:
+            askTheAudience()
+        case .phoneAFriend:
+            callAFriend()
+        }
+    }
+
+    // MARK: PRIVATE METHOD
+
+    func applyFiftyFifty() {
+        guard let currentQuestion else { return }
+        var newOptions = currentQuestion.options
+
+        let incorrectIndices = [0,1,2,3].filter { $0 != currentQuestion.correctIndex }.shuffled().prefix(2)
+        print(incorrectIndices)
+        for index in incorrectIndices {
+            newOptions[index] = ""
+        }
+        self.currentQuestion = Question(text: currentQuestion.text,
+                                        options: newOptions,
+                                        correctIndex: currentQuestion.correctIndex)
+        usedLifelines.insert(.fiftyFifty)
+    }
+
+    func askTheAudience() {
+        usedLifelines.insert(.askAudience)
+    }
+
+    func callAFriend() {
+        usedLifelines.insert(.phoneAFriend)
     }
 }
