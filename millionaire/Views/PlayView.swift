@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 struct PlayView: View {
+
     // MARK: Properties
+    @ObservedObject var gameManager: GameManager
     @GestureState private var dragOffset = CGSize.zero
-    @StateObject var gameManager = GameManager()
 
     @State private var showInfoOverlay = false
     @State private var statusLocationX: CGFloat = UIScreen.main.bounds.width
@@ -23,41 +24,44 @@ struct PlayView: View {
     // MARK: Body layer
     var body: some View {
         ZStack {
-            // Play view
+            // Main view
             VStack(spacing: 20) {
+                Spacer()
                 // Show play info button
-                HStack(spacing: 0) {
-                    Spacer()
-                    ShowPlayInfoButton(action: showPlayInfoView)
-                        .opacity(showInfoOverlay ? 0 : 1)
-                }.frame(height: 50)
+                ShowPlayInfoButton(isShowing: showInfoOverlay,action: showPlayInfoView)
+                    .frame(height: 50)
 
                 // Question view
                 QuestionView(
-                    number: gameManager.currentIndex + 1,
+                    index: gameManager.currentIndex,
                     text: gameManager.currentQuestion!.text
                 ).padding(20)
 
                 // Answer view
                 answerButtons
-                if gameManager.gameState == .gameOver {
-                    ResultView(state: .gameOver, action: gameManager.restartGame)
-                }
                 Spacer()
 
                 // Lifelines View
                 lifeLineButtons
 
-            }
-            .background(BackgroundImgView(img: .play))
-            .overlay {
-                // Information view
-                GameStatusView(currentIndex: gameManager.currentIndex, locationX: $statusLocationX)
-                    .gesture(hiddenPlayInfoWithTouch())
-                    .gesture(hiddenPlayInfoWithSwipe())
-                    .opacity(showInfoOverlay ? 1 : 0)
+            }.padding()
+
+            // Information view
+            GameStatusView(currentIndex: gameManager.currentIndex, locationX: $statusLocationX)
+                .gesture(hiddenPlayInfoWithTouch())
+                .gesture(hiddenPlayInfoWithSwipe())
+                .opacity(showInfoOverlay ? 1 : 0)
+
+            // Ask audience view
+            if let answerPercentages = gameManager.answerPercentages,
+               gameManager.state == .askTheAudience {
+                AskAudienceView(answerPercent: answerPercentages) {
+                    gameManager.resumeGame()
+                }
             }
         }
+        .background(BackgroundImgView(img: .play))
+        .animation(.easeOut(duration: 0.25), value: gameManager.state)
         .gesture(showPlayInfoWithSwipe())
 
     }
@@ -123,7 +127,7 @@ struct PlayView: View {
 
     /// Show Phone A Friend view handler
     private func handlePhoneAFriendTapped() {
-        
+
     }
 
     /// Show Ask Audience view handler
@@ -175,5 +179,5 @@ struct PlayView: View {
 }
 
 #Preview {
-    PlayView()
+    PlayView(gameManager: GameManager())
 }

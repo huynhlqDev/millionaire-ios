@@ -10,24 +10,27 @@ import SwiftUI
 
 enum AnswerOption: String, CaseIterable, Identifiable {
     case A, B, C, D
-    
+
     var id: String { rawValue}
     var label: String { rawValue }
     var index: Int? { Self.allCases.firstIndex(of: self)}
 }
 
-enum GameState {
-    case ready
+enum GameState: Equatable {
     case playing
-    case checkAnswer
-    case showResult
-    case support
-    case gameOver
     case win
+    case gameOver
+    case fiftyFifty
+    case askTheAudience
+    case phoneAFriend
 }
 
 class GameManager: ObservableObject {
-    @Published var gameState: GameState = .ready
+    @Published var state: GameState {
+        didSet {
+            debugLog("state changed to: \(state)")
+        }
+    }
 
     @Published var questions: [Question] = []
     @Published var currentIndex: Int = 0
@@ -36,15 +39,17 @@ class GameManager: ObservableObject {
     @Published var isGameOver: Bool? = nil
 
     @Published var usedLifelines: Set<LifelineType> = []
+    @Published var answerPercentages: [Int : Int]? = nil
     var currentQuestion: Question?
 
     init() {
+        state = .playing
         startGame()
     }
-    
+
     func getQuestions() -> [Question] {
         [
-            
+
             Question(
                 text: "What is the capital of France?",
                 options: ["Berlin", "Madrid", "Paris", "Rome"],
@@ -70,19 +75,22 @@ class GameManager: ObservableObject {
                 options: ["1", "2", "3", "5"],
                 correctIndex: 1
             )
-            
+
         ]
     }
-    
+
     func startGame() {
-        gameState = .playing
         questions = getQuestions()
         currentQuestion = questions[currentIndex]
     }
-    
+
+    func resumeGame() {
+        state = .playing
+    }
+
     func selectAnswer(_ answer: AnswerOption) {
         selectedAnswer = answer
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self else { return }
             isAnswerCorrect = ( answer.index == currentQuestion!.correctIndex)
@@ -91,25 +99,24 @@ class GameManager: ObservableObject {
                 goToNextQuestion()
             } else {
                 isGameOver = true
-                gameState = .gameOver
+                state = .gameOver
             }
         }
     }
-    
+
     func goToNextQuestion() {
         selectedAnswer = nil
         isAnswerCorrect = nil
-        
+
         if currentIndex + 1 < questions.count {
             currentIndex += 1
             currentQuestion = questions[currentIndex]
         } else {
             isGameOver = true
-            gameState = .win
-            print("you win")
+            state = .win
         }
     }
-    
+
     func restartGame() {
         currentIndex = 0
         selectedAnswer = nil
@@ -117,18 +124,19 @@ class GameManager: ObservableObject {
         isGameOver = false
         currentQuestion = questions[currentIndex]
         usedLifelines.removeAll()
-        gameState = .ready
+        state = .playing
     }
 
     func useLifeline(_ lifeline: LifelineType) {
+        debugLog("lifeline used: \(lifeline)")
         guard !usedLifelines.contains(lifeline) else { return }
 
         usedLifelines.insert(lifeline)
-
         switch lifeline {
         case .fiftyFifty:
             applyFiftyFifty()
         case .askAudience:
+            state = .askTheAudience
             askTheAudience()
         case .phoneAFriend:
             callAFriend()
@@ -138,6 +146,7 @@ class GameManager: ObservableObject {
     // MARK: PRIVATE METHOD
 
     func applyFiftyFifty() {
+        usedLifelines.insert(.fiftyFifty)
         guard let currentQuestion else { return }
         var newOptions = currentQuestion.options
 
@@ -149,14 +158,73 @@ class GameManager: ObservableObject {
         self.currentQuestion = Question(text: currentQuestion.text,
                                         options: newOptions,
                                         correctIndex: currentQuestion.correctIndex)
-        usedLifelines.insert(.fiftyFifty)
     }
 
     func askTheAudience() {
         usedLifelines.insert(.askAudience)
+        let correctIndex = currentQuestion!.correctIndex
+        if usedLifelines.contains(.fiftyFifty) {
+            let remainingIndices = currentQuestion!.options.enumerated().filter {
+                !$0.element.isEmpty
+            }.map { $0.offset }
+            debugLog("optionsIndex: \(remainingIndices)")
+            answerPercentages = generateAnswerPercentages(correctIndex, remainingIndices: remainingIndices)
+            debugLog("answerPercentages: \(String(describing: answerPercentages))")
+        } else {
+            answerPercentages = generateAnswerPercentages(correctIndex)
+        }
     }
 
     func callAFriend() {
         usedLifelines.insert(.phoneAFriend)
     }
+
+    // MARK: PRIVATE METHOD
+
+    /// Generate percentage votes for each answer (used for Ask the Audience lifeline)
+    /// - Parameters:
+    ///   - correctIndex: The index of the correct answer
+    ///   - remainingIndices: Optional – if 50/50 is used, pass in remaining indices (2 items)
+    /// - Returns: Dictionary with answer index as key, and percentage as value
+    func generateAnswerPercentages(_ correctIndex: Int, remainingIndices: [Int]? = nil) -> [Int: Int] {
+        var percentages: [Int: Int] = [:]
+        let correctWeight = Int.random(in: 40...70)
+
+        if let remaining = remainingIndices, remaining.count == 2 {
+            // 🎯 Trường hợp 50/50
+            let wrongWeight = 100 - correctWeight
+            let wrongIndex = remaining.filter { $0 != correctIndex }.first
+
+            for index in 0..<4 {
+                if index == correctIndex {
+                    percentages[index] = correctWeight
+                } else if (index == wrongIndex) {
+                    percentages[index] = wrongWeight
+                } else {
+                    percentages[index] = 0
+                }
+            }
+        } else {
+            var remaining = 100 - correctWeight
+            var otherIndices = [0, 1, 2, 3].filter { $0 != correctIndex }
+            otherIndices.shuffle()
+
+            for i in 0..<otherIndices.count {
+                let index = otherIndices[i]
+
+                // Phân chia đều random phần còn lại
+                let value = (i == otherIndices.count - 1)
+                ? remaining
+                : Int.random(in: 0...(remaining / (otherIndices.count - i)))
+
+                percentages[index] = value
+                remaining -= value
+            }
+
+            percentages[correctIndex] = correctWeight
+        }
+
+        return percentages
+    }
+
 }

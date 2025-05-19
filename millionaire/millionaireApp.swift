@@ -23,9 +23,11 @@ struct millionaireApp: App {
         }
     }()
 
+    @StateObject private var gameManager: GameManager = GameManager()
+
     var body: some Scene {
         WindowGroup {
-            PlayView()
+            PlayView(gameManager: gameManager)
         }
         .modelContainer(sharedModelContainer)
     }

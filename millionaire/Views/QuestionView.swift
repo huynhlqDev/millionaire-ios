@@ -10,7 +10,7 @@ import SwiftUI
 
 struct QuestionView: View {
     var remainingTime: Int = 30
-    var number: Int
+    var index: Int
     var text: String
     private let viewWidth: CGFloat = UIScreen.main.bounds.width * 0.9
     private let viewHeight: CGFloat = UIScreen.main.bounds.height * 0.2
@@ -18,7 +18,7 @@ struct QuestionView: View {
 
     var body: some View {
         VStack {
-            Text("Question \(number)")
+            Text("Question \(index + 1)")
                 .font(.headline)
                 .frame(width: viewWidth, height: 36)
             Text(text)
