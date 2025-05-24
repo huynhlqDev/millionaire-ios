@@ -26,10 +26,11 @@ struct PlayView: View {
         ZStack {
             // Main view
             VStack(spacing: 20) {
-                Spacer()
                 // Show play info button
-                ShowPlayInfoButton(isShowing: showInfoOverlay,action: showPlayInfoView)
-                    .frame(height: 50)
+                ShowPlayInfoButton(
+                    isShowing: showInfoOverlay,
+                    action: showPlayInfoView
+                ).frame(height: 50).padding()
 
                 // Question view
                 QuestionView(
@@ -42,22 +43,30 @@ struct PlayView: View {
                 Spacer()
 
                 // Lifelines View
-                lifeLineButtons
-
-            }.padding()
+                lifeLineButtons.padding()
+            }.padding().disabled(gameManager.state == .gameOver)
 
             // Information view
-            GameStatusView(currentIndex: gameManager.currentIndex, locationX: $statusLocationX)
-                .gesture(hiddenPlayInfoWithTouch())
-                .gesture(hiddenPlayInfoWithSwipe())
-                .opacity(showInfoOverlay ? 1 : 0)
+            GameStatusView(
+                currentIndex: gameManager.currentIndex,
+                locationX: $statusLocationX
+            )
+            .gesture(hiddenPlayInfoWithTouch())
+            .gesture(hiddenPlayInfoWithSwipe())
+            .opacity(showInfoOverlay ? 1 : 0)
 
             // Ask audience view
             if let answerPercentages = gameManager.answerPercentages,
                gameManager.state == .askTheAudience {
-                AskAudienceView(answerPercent: answerPercentages) {
-                    gameManager.resumeGame()
-                }
+                AskAudienceView(
+                    answerPercent: answerPercentages,
+                    okAction: gameManager.resumeGame
+                )
+            } else if gameManager.state == .phoneAFriend {
+                PhoneAFriendView(
+                    answerIndex: gameManager.currentQuestion!.correctIndex,
+                    okAction: gameManager.resumeGame
+                )
             }
         }
         .background(BackgroundImgView(img: .play))
@@ -116,24 +125,7 @@ struct PlayView: View {
         }
     }
 
-
-
     // MARK: Private methods
-
-    /// Show Fifty-Fifty view handler
-    private func handleFiftyFiftyTapped() {
-        gameManager.applyFiftyFifty()
-    }
-
-    /// Show Phone A Friend view handler
-    private func handlePhoneAFriendTapped() {
-
-    }
-
-    /// Show Ask Audience view handler
-    private func handleAskAudienceTapped() {
-
-    }
 
     private func showPlayInfoView() {
         withAnimation() {

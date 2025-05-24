@@ -139,6 +139,7 @@ class GameManager: ObservableObject {
             state = .askTheAudience
             askTheAudience()
         case .phoneAFriend:
+            state = .phoneAFriend
             callAFriend()
         }
     }
