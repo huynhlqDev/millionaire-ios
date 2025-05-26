@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2FB0C648EEE58F8B7DC03648 /* Pods_millionaire_millionaireUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2CD1A298CDA2789D7958AD /* Pods_millionaire_millionaireUITests.framework */; };
+		F56FD54370771ED6DDB67708 /* Pods_millionaireTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9EB162E1941FDDD2B3467 /* Pods_millionaireTests.framework */; };
+		F9FA91806F1C1C5AFE7A8F87 /* Pods_millionaire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98FBA5A83D46A757A793B1EC /* Pods_millionaire.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		133A39832D13346600AEF34E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +33,15 @@
 		133A39702D13346500AEF34E /* millionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = millionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		133A39822D13346600AEF34E /* millionaireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = millionaireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		133A398C2D13346600AEF34E /* millionaireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = millionaireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D49024AD38ED66075E3082 /* Pods-millionaire-millionaireUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaire-millionaireUITests.debug.xcconfig"; path = "Target Support Files/Pods-millionaire-millionaireUITests/Pods-millionaire-millionaireUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D6F977F56E1147A010504C5 /* Pods-millionaireTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaireTests.debug.xcconfig"; path = "Target Support Files/Pods-millionaireTests/Pods-millionaireTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BA9EB162E1941FDDD2B3467 /* Pods_millionaireTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_millionaireTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5400C6EDDEB5E42FCB6DD143 /* Pods-millionaire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaire.release.xcconfig"; path = "Target Support Files/Pods-millionaire/Pods-millionaire.release.xcconfig"; sourceTree = "<group>"; };
+		6F0DD6874882AA55155F92B7 /* Pods-millionaireTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaireTests.release.xcconfig"; path = "Target Support Files/Pods-millionaireTests/Pods-millionaireTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D2CD1A298CDA2789D7958AD /* Pods_millionaire_millionaireUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_millionaire_millionaireUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98FBA5A83D46A757A793B1EC /* Pods_millionaire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_millionaire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9EBF1779FB08391DCE87026 /* Pods-millionaire-millionaireUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaire-millionaireUITests.release.xcconfig"; path = "Target Support Files/Pods-millionaire-millionaireUITests/Pods-millionaire-millionaireUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AB2D1E83A951414BB6DD69F6 /* Pods-millionaire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-millionaire.debug.xcconfig"; path = "Target Support Files/Pods-millionaire/Pods-millionaire.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9FA91806F1C1C5AFE7A8F87 /* Pods_millionaire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56FD54370771ED6DDB67708 /* Pods_millionaireTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +83,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FB0C648EEE58F8B7DC03648 /* Pods_millionaire_millionaireUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7A4AEF314C9CEA19D1E813 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB2D1E83A951414BB6DD69F6 /* Pods-millionaire.debug.xcconfig */,
+				5400C6EDDEB5E42FCB6DD143 /* Pods-millionaire.release.xcconfig */,
+				18D49024AD38ED66075E3082 /* Pods-millionaire-millionaireUITests.debug.xcconfig */,
+				A9EBF1779FB08391DCE87026 /* Pods-millionaire-millionaireUITests.release.xcconfig */,
+				2D6F977F56E1147A010504C5 /* Pods-millionaireTests.debug.xcconfig */,
+				6F0DD6874882AA55155F92B7 /* Pods-millionaireTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		133A39672D13346500AEF34E = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +110,8 @@
 				133A39852D13346600AEF34E /* millionaireTests */,
 				133A398F2D13346600AEF34E /* millionaireUITests */,
 				133A39712D13346500AEF34E /* Products */,
+				0C7A4AEF314C9CEA19D1E813 /* Pods */,
+				2A7710253E95A4CEC91C3B87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +125,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2A7710253E95A4CEC91C3B87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98FBA5A83D46A757A793B1EC /* Pods_millionaire.framework */,
+				7D2CD1A298CDA2789D7958AD /* Pods_millionaire_millionaireUITests.framework */,
+				4BA9EB162E1941FDDD2B3467 /* Pods_millionaireTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,6 +142,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 133A39962D13346600AEF34E /* Build configuration list for PBXNativeTarget "millionaire" */;
 			buildPhases = (
+				5A76319497517931CFEFCC2D /* [CP] Check Pods Manifest.lock */,
 				133A396C2D13346500AEF34E /* Sources */,
 				133A396D2D13346500AEF34E /* Frameworks */,
 				133A396E2D13346500AEF34E /* Resources */,
@@ -111,8 +155,6 @@
 				133A39722D13346500AEF34E /* millionaire */,
 			);
 			name = millionaire;
-			packageProductDependencies = (
-			);
 			productName = millionaire;
 			productReference = 133A39702D13346500AEF34E /* millionaire.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +163,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 133A39992D13346600AEF34E /* Build configuration list for PBXNativeTarget "millionaireTests" */;
 			buildPhases = (
+				3AFF7E3EC943F3E3840DC92B /* [CP] Check Pods Manifest.lock */,
 				133A397E2D13346600AEF34E /* Sources */,
 				133A397F2D13346600AEF34E /* Frameworks */,
 				133A39802D13346600AEF34E /* Resources */,
@@ -134,8 +177,6 @@
 				133A39852D13346600AEF34E /* millionaireTests */,
 			);
 			name = millionaireTests;
-			packageProductDependencies = (
-			);
 			productName = millionaireTests;
 			productReference = 133A39822D13346600AEF34E /* millionaireTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -144,6 +185,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 133A399C2D13346600AEF34E /* Build configuration list for PBXNativeTarget "millionaireUITests" */;
 			buildPhases = (
+				7991B041DE562A52A238A147 /* [CP] Check Pods Manifest.lock */,
 				133A39882D13346600AEF34E /* Sources */,
 				133A39892D13346600AEF34E /* Frameworks */,
 				133A398A2D13346600AEF34E /* Resources */,
@@ -157,8 +199,6 @@
 				133A398F2D13346600AEF34E /* millionaireUITests */,
 			);
 			name = millionaireUITests;
-			packageProductDependencies = (
-			);
 			productName = millionaireUITests;
 			productReference = 133A398C2D13346600AEF34E /* millionaireUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -230,6 +270,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3AFF7E3EC943F3E3840DC92B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-millionaireTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A76319497517931CFEFCC2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-millionaire-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7991B041DE562A52A238A147 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-millionaire-millionaireUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		133A396C2D13346500AEF34E /* Sources */ = {
@@ -390,15 +499,18 @@
 		};
 		133A39972D13346600AEF34E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB2D1E83A951414BB6DD69F6 /* Pods-millionaire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"millionaire/Preview Content\"";
 				DEVELOPMENT_TEAM = 5XAK8J5JQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Triệu Phú";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -412,6 +524,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huynhlq.dev.game.millionaire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -420,15 +533,18 @@
 		};
 		133A39982D13346600AEF34E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5400C6EDDEB5E42FCB6DD143 /* Pods-millionaire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"millionaire/Preview Content\"";
 				DEVELOPMENT_TEAM = 5XAK8J5JQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Triệu Phú";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -442,6 +558,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = huynhlq.dev.game.millionaire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,6 +567,7 @@
 		};
 		133A399A2D13346600AEF34E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D6F977F56E1147A010504C5 /* Pods-millionaireTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -469,6 +587,7 @@
 		};
 		133A399B2D13346600AEF34E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F0DD6874882AA55155F92B7 /* Pods-millionaireTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +607,7 @@
 		};
 		133A399D2D13346600AEF34E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18D49024AD38ED66075E3082 /* Pods-millionaire-millionaireUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -505,6 +625,7 @@
 		};
 		133A399E2D13346600AEF34E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9EBF1779FB08391DCE87026 /* Pods-millionaire-millionaireUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

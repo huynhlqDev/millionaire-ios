@@ -32,6 +32,8 @@ class GameManager: ObservableObject {
         }
     }
 
+    @Published var autoShowInfo: Bool = false
+
     @Published var questions: [Question] = []
     @Published var currentIndex: Int = 0
     @Published var selectedAnswer: AnswerOption? = nil
@@ -39,7 +41,7 @@ class GameManager: ObservableObject {
     @Published var isGameOver: Bool? = nil
 
     @Published var usedLifelines: Set<LifelineType> = []
-    @Published var answerPercentages: [Int : Int]? = nil
+    @Published var answerPercentages: [Int : Int] = [:]
     var currentQuestion: Question?
 
     init() {
@@ -47,13 +49,52 @@ class GameManager: ObservableObject {
         startGame()
     }
 
-    func getQuestions() -> [Question] {
+    private func getQuestions() -> [Question] {
         [
-
             Question(
                 text: "What is the capital of France?",
                 options: ["Berlin", "Madrid", "Paris", "Rome"],
                 correctIndex: 2
+            ),
+            Question(
+                text: "What is the capital of France?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                correctIndex: 2
+            ),
+            Question(
+                text: "What is the capital of France?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                correctIndex: 2
+            ),
+            Question(
+                text: "What is the capital of France?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                correctIndex: 2
+            ),
+            Question(
+                text: "What is the capital of France - end?",
+                options: ["Berlin", "Madrid", "Paris", "Rome"],
+                correctIndex: 2
+            ),
+            Question(
+                text: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correctIndex: 1
+            ),
+            Question(
+                text: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correctIndex: 1
+            ),
+            Question(
+                text: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correctIndex: 1
+            ),
+            Question(
+                text: "Which planet is known as the Red Planet?",
+                options: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correctIndex: 1
             ),
             Question(
                 text: "Which planet is known as the Red Planet?",
@@ -66,22 +107,32 @@ class GameManager: ObservableObject {
                 correctIndex: 0
             ),
             Question(
-                text: "What is the largest ocean on Earth?",
-                options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-                correctIndex: 3
+                text: "Who wrote 'To Kill a Mockingbird'?",
+                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+                correctIndex: 0
             ),
             Question(
-                text: "What is the smallest prime number?",
-                options: ["1", "2", "3", "5"],
-                correctIndex: 1
-            )
-
+                text: "Who wrote 'To Kill a Mockingbird'?",
+                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+                correctIndex: 0
+            ),
+            Question(
+                text: "Who wrote 'To Kill a Mockingbird'?",
+                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+                correctIndex: 0
+            ),
+            Question(
+                text: "Who wrote 'To Kill a Mockingbird'?",
+                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+                correctIndex: 0
+            ),
         ]
     }
 
     func startGame() {
         questions = getQuestions()
         currentQuestion = questions[currentIndex]
+        SoundManager.shared.startPlayingMusic(with: currentIndex)
     }
 
     func resumeGame() {
@@ -91,40 +142,37 @@ class GameManager: ObservableObject {
     func selectAnswer(_ answer: AnswerOption) {
         selectedAnswer = answer
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            guard let self else { return }
+        // Sleep 2s for success animation perform before go to next question.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             isAnswerCorrect = ( answer.index == currentQuestion!.correctIndex)
             if isAnswerCorrect == true {
-                sleep(2) // Sleep 2s for success animation perform before go to next question.
-                goToNextQuestion()
+                if currentIndex == 14 { // Winner
+                    SoundManager.shared.nextEffectLevelUp() {
+                        self.goToNextQuestion()
+                    }
+                } else if currentIndex == 4 || currentIndex == 9 {
+                    SoundManager.shared.nextEffectLevelUp() {
+                        debugLog("Level Up complete")
+                        SoundManager.shared.startPlayingMusic(with: self.currentIndex)
+                        self.goToNextQuestion()
+                        self.triggerAutoShowInfo()
+                    }
+                } else if currentIndex < 4 {
+                    SoundManager.shared.playSound(.correct_short, isEffect: true)
+                    self.goToNextQuestion()
+                } else {
+                    SoundManager.shared.playSound(.correct_long, isEffect: true) {
+                        self.goToNextQuestion()
+                    }
+                }
             } else {
+                SoundManager.shared.playSound(.gameOver) {
+                    // Show alert thanks for your attendent
+                }
                 isGameOver = true
                 state = .gameOver
             }
         }
-    }
-
-    func goToNextQuestion() {
-        selectedAnswer = nil
-        isAnswerCorrect = nil
-
-        if currentIndex + 1 < questions.count {
-            currentIndex += 1
-            currentQuestion = questions[currentIndex]
-        } else {
-            isGameOver = true
-            state = .win
-        }
-    }
-
-    func restartGame() {
-        currentIndex = 0
-        selectedAnswer = nil
-        isAnswerCorrect = nil
-        isGameOver = false
-        currentQuestion = questions[currentIndex]
-        usedLifelines.removeAll()
-        state = .playing
     }
 
     func useLifeline(_ lifeline: LifelineType) {
@@ -137,7 +185,10 @@ class GameManager: ObservableObject {
             applyFiftyFifty()
         case .askAudience:
             state = .askTheAudience
-            askTheAudience()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+                guard let self else { return }
+                self.askTheAudience()
+            }
         case .phoneAFriend:
             state = .phoneAFriend
             callAFriend()
@@ -146,22 +197,22 @@ class GameManager: ObservableObject {
 
     // MARK: PRIVATE METHOD
 
-    func applyFiftyFifty() {
+    private func applyFiftyFifty() {
         usedLifelines.insert(.fiftyFifty)
         guard let currentQuestion else { return }
         var newOptions = currentQuestion.options
 
         let incorrectIndices = [0,1,2,3].filter { $0 != currentQuestion.correctIndex }.shuffled().prefix(2)
-        print(incorrectIndices)
         for index in incorrectIndices {
             newOptions[index] = ""
         }
         self.currentQuestion = Question(text: currentQuestion.text,
                                         options: newOptions,
                                         correctIndex: currentQuestion.correctIndex)
+        SoundManager.shared.playSound(.result, isEffect: true)
     }
 
-    func askTheAudience() {
+    private func askTheAudience() {
         usedLifelines.insert(.askAudience)
         let correctIndex = currentQuestion!.correctIndex
         if usedLifelines.contains(.fiftyFifty) {
@@ -174,9 +225,10 @@ class GameManager: ObservableObject {
         } else {
             answerPercentages = generateAnswerPercentages(correctIndex)
         }
+        SoundManager.shared.playSound(.result, isEffect: true)
     }
 
-    func callAFriend() {
+    private func callAFriend() {
         usedLifelines.insert(.phoneAFriend)
     }
 
@@ -187,7 +239,7 @@ class GameManager: ObservableObject {
     ///   - correctIndex: The index of the correct answer
     ///   - remainingIndices: Optional – if 50/50 is used, pass in remaining indices (2 items)
     /// - Returns: Dictionary with answer index as key, and percentage as value
-    func generateAnswerPercentages(_ correctIndex: Int, remainingIndices: [Int]? = nil) -> [Int: Int] {
+    private func generateAnswerPercentages(_ correctIndex: Int, remainingIndices: [Int]? = nil) -> [Int: Int] {
         var percentages: [Int: Int] = [:]
         let correctWeight = Int.random(in: 40...70)
 
@@ -228,4 +280,41 @@ class GameManager: ObservableObject {
         return percentages
     }
 
+    private func goToNextQuestion() {
+        selectedAnswer = nil
+        isAnswerCorrect = nil
+
+        if currentIndex + 1 < questions.count {
+            currentIndex += 1
+            currentQuestion = questions[currentIndex]
+        } else {
+            SoundManager.shared.playSound(.lastGame) {
+                // Show alert thanks for your attendent
+            }
+            isGameOver = true
+            state = .win
+        }
+    }
+
+    private func restartGame() {
+        currentIndex = 0
+        selectedAnswer = nil
+        isAnswerCorrect = nil
+        isGameOver = false
+        currentQuestion = questions[currentIndex]
+        usedLifelines.removeAll()
+        state = .playing
+    }
+
+    private func triggerAutoShowInfo() {
+        autoShowInfo = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            self.autoShowInfo = false
+        }
+    }
+
+}
+
+extension GameManager {
+    
 }

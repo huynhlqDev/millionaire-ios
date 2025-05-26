@@ -18,8 +18,8 @@ struct PlayView: View {
     @State private var statusLocationX: CGFloat = UIScreen.main.bounds.width
     @State private var selectedLifeline: LifelineType? = nil
 
-    private let statusLocationXWillAppear: CGFloat = UIScreen.main.bounds.width
-    private let statusLocationXDidAppear: CGFloat = UIScreen.main.bounds.width*(0.2)
+    private let statusLocationXWillAppear: CGFloat = screenWidth
+    private let statusLocationXDidAppear: CGFloat = screenWidth*(0.2)
 
     // MARK: Body layer
     var body: some View {
@@ -56,10 +56,9 @@ struct PlayView: View {
             .opacity(showInfoOverlay ? 1 : 0)
 
             // Ask audience view
-            if let answerPercentages = gameManager.answerPercentages,
-               gameManager.state == .askTheAudience {
+            if gameManager.state == .askTheAudience {
                 AskAudienceView(
-                    answerPercent: answerPercentages,
+                    answerPercent: gameManager.answerPercentages,
                     okAction: gameManager.resumeGame
                 )
             } else if gameManager.state == .phoneAFriend {
@@ -72,7 +71,9 @@ struct PlayView: View {
         .background(BackgroundImgView(img: .play))
         .animation(.easeOut(duration: 0.25), value: gameManager.state)
         .gesture(showPlayInfoWithSwipe())
-
+        .onChange(of: gameManager.autoShowInfo) { _, new in
+            new ? showPlayInfoView() : hiddenPlayInfoView()
+        }
     }
 
     // MARK: Views
@@ -134,6 +135,13 @@ struct PlayView: View {
         }
     }
 
+    private func hiddenPlayInfoView() {
+        withAnimation() {
+            statusLocationX = statusLocationXWillAppear
+            showInfoOverlay = false
+        }
+    }
+
     private func showPlayInfoWithSwipe() -> some Gesture {
         DragGesture().updating($dragOffset) { value, _, _ in
             // Must swipe on the right edge of the screen
@@ -148,11 +156,7 @@ struct PlayView: View {
 
     private func hiddenPlayInfoWithTouch() -> some Gesture {
         TapGesture().onEnded {
-            withAnimation() {
-                statusLocationX = statusLocationXWillAppear
-                showInfoOverlay = false
-            }
-
+            hiddenPlayInfoView()
         }
     }
 
@@ -161,10 +165,7 @@ struct PlayView: View {
             // Swipe must go to the right
             let isToRight = value.translation.width > 0
             if isToRight {
-                withAnimation() {
-                    statusLocationX = statusLocationXWillAppear
-                    showInfoOverlay = false
-                }
+                hiddenPlayInfoView()
             }
         }
     }
