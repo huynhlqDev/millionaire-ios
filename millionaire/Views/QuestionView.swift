@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct QuestionView: View {
-    var remainingTime: Int = 30
+    var remainingTime: TimeInterval
     var index: Int
     var text: String
     private let viewWidth: CGFloat = UIScreen.main.bounds.width * 0.9
@@ -34,9 +34,9 @@ struct QuestionView: View {
                 .shadow(color: .black.opacity(0.5), radius: 4, x: 2, y: 2)
         }
         .overlay {
-            CountdownCircleView(circleSize: circleSize)
-            .offset(x: 0, y: -viewHeight/2)
-
+            CountdownCircleView(remainingTime: remainingTime)
+                .offset(x: 0, y: -viewHeight/2)
+                .frame(width: 65, height: 65)
         }
     }
 }

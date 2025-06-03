@@ -34,6 +34,7 @@ struct PlayView: View {
 
                 // Question view
                 QuestionView(
+                    remainingTime: gameManager.remainingTime,
                     index: gameManager.currentIndex,
                     text: gameManager.currentQuestion!.text
                 ).padding(20)
@@ -44,6 +45,7 @@ struct PlayView: View {
 
                 // Lifelines View
                 lifeLineButtons.padding()
+                Spacer()
             }.padding().disabled(gameManager.state == .gameOver)
 
             // Information view
@@ -73,6 +75,11 @@ struct PlayView: View {
         .gesture(showPlayInfoWithSwipe())
         .onChange(of: gameManager.autoShowInfo) { _, new in
             new ? showPlayInfoView() : hiddenPlayInfoView()
+        }
+        .onChange(of: gameManager.state) { _, newState in
+            if newState == .gameOver {
+                showPlayInfoView()
+            }
         }
     }
 
@@ -117,11 +124,11 @@ struct PlayView: View {
         .alert(item: $selectedLifeline) { lifeline in
             Alert(
                 title: Text("Xác nhận"),
-                message: Text("Bạn muốn dùng trợ giúp '\(lifeline.rawValue)'?"),
+                message: Text("Bạn muốn dùng trợ giúp \(lifeline.label)?"),
                 primaryButton: .default(Text("Dùng")) {
                     gameManager.useLifeline(lifeline)
                 },
-                secondaryButton: .cancel()
+                secondaryButton: .cancel(Text("Không"))
             )
         }
     }

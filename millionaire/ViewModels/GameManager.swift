@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
 enum AnswerOption: String, CaseIterable, Identifiable {
@@ -26,12 +27,15 @@ enum GameState: Equatable {
 }
 
 class GameManager: ObservableObject {
-    @Published var state: GameState {
+    private var cancellables = Set<AnyCancellable>()
+
+    @Published var state: GameState = .gameOver {
         didSet {
             debugLog("state changed to: \(state)")
         }
     }
 
+    @Published var remainingTime: TimeInterval = 0
     @Published var autoShowInfo: Bool = false
 
     @Published var questions: [Question] = []
@@ -45,94 +49,36 @@ class GameManager: ObservableObject {
     var currentQuestion: Question?
 
     init() {
-        state = .playing
-        startGame()
-    }
+        TimeManager.shared.$remainingTime
+            .sink { [weak self] remainingTime in
+                guard let self else { return }
+                self.remainingTime = remainingTime
+                if remainingTime == 0 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.gameOver()
+                    }
+                }
+            }
+            .store(in: &cancellables)
 
-    private func getQuestions() -> [Question] {
-        [
-            Question(
-                text: "What is the capital of France?",
-                options: ["Berlin", "Madrid", "Paris", "Rome"],
-                correctIndex: 2
-            ),
-            Question(
-                text: "What is the capital of France?",
-                options: ["Berlin", "Madrid", "Paris", "Rome"],
-                correctIndex: 2
-            ),
-            Question(
-                text: "What is the capital of France?",
-                options: ["Berlin", "Madrid", "Paris", "Rome"],
-                correctIndex: 2
-            ),
-            Question(
-                text: "What is the capital of France?",
-                options: ["Berlin", "Madrid", "Paris", "Rome"],
-                correctIndex: 2
-            ),
-            Question(
-                text: "What is the capital of France - end?",
-                options: ["Berlin", "Madrid", "Paris", "Rome"],
-                correctIndex: 2
-            ),
-            Question(
-                text: "Which planet is known as the Red Planet?",
-                options: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correctIndex: 1
-            ),
-            Question(
-                text: "Which planet is known as the Red Planet?",
-                options: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correctIndex: 1
-            ),
-            Question(
-                text: "Which planet is known as the Red Planet?",
-                options: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correctIndex: 1
-            ),
-            Question(
-                text: "Which planet is known as the Red Planet?",
-                options: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correctIndex: 1
-            ),
-            Question(
-                text: "Which planet is known as the Red Planet?",
-                options: ["Earth", "Mars", "Jupiter", "Saturn"],
-                correctIndex: 1
-            ),
-            Question(
-                text: "Who wrote 'To Kill a Mockingbird'?",
-                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-                correctIndex: 0
-            ),
-            Question(
-                text: "Who wrote 'To Kill a Mockingbird'?",
-                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-                correctIndex: 0
-            ),
-            Question(
-                text: "Who wrote 'To Kill a Mockingbird'?",
-                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-                correctIndex: 0
-            ),
-            Question(
-                text: "Who wrote 'To Kill a Mockingbird'?",
-                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-                correctIndex: 0
-            ),
-            Question(
-                text: "Who wrote 'To Kill a Mockingbird'?",
-                options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
-                correctIndex: 0
-            ),
-        ]
+        OfflineQuestionService.shared.fetchQuestions() { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let ques):
+                self.questions = ques
+                self.startGame()
+            case .failure(let err):
+                debugLog(err.localizedDescription)
+                break
+            }
+        }
     }
 
     func startGame() {
-        questions = getQuestions()
+        state = .playing
         currentQuestion = questions[currentIndex]
         SoundManager.shared.startPlayingMusic(with: currentIndex)
+        TimeManager.shared.start()
     }
 
     func resumeGame() {
@@ -140,13 +86,17 @@ class GameManager: ObservableObject {
     }
 
     func selectAnswer(_ answer: AnswerOption) {
+        TimeManager.shared.pause()
         selectedAnswer = answer
 
         // Sleep 2s for success animation perform before go to next question.
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
             isAnswerCorrect = ( answer.index == currentQuestion!.correctIndex)
+            #if DEBUG
+            isAnswerCorrect = true
+            #endif
             if isAnswerCorrect == true {
-                if currentIndex == 14 { // Winner
+                if currentIndex >= 14 { // Winner
                     SoundManager.shared.nextEffectLevelUp() {
                         self.goToNextQuestion()
                     }
@@ -166,13 +116,18 @@ class GameManager: ObservableObject {
                     }
                 }
             } else {
-                SoundManager.shared.playSound(.gameOver) {
-                    // Show alert thanks for your attendent
-                }
-                isGameOver = true
-                state = .gameOver
+                gameOver()
             }
         }
+    }
+
+    private func gameOver() {
+        debugLog("game over")
+        SoundManager.shared.playSound(.gameOver) {
+            // Show alert thanks for your attendent
+        }
+        isGameOver = true
+        state = .gameOver
     }
 
     func useLifeline(_ lifeline: LifelineType) {
@@ -285,6 +240,7 @@ class GameManager: ObservableObject {
         isAnswerCorrect = nil
 
         if currentIndex + 1 < questions.count {
+            TimeManager.shared.restart()
             currentIndex += 1
             currentQuestion = questions[currentIndex]
         } else {
@@ -316,5 +272,5 @@ class GameManager: ObservableObject {
 }
 
 extension GameManager {
-    
+
 }

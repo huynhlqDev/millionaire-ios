@@ -7,19 +7,21 @@
 
 import Foundation
 
-class TimeManager {
+class TimeManager: ObservableObject {
+    static let shared = TimeManager()
+
     // MARK: - Properties
+    @Published var remainingTime: TimeInterval
+
     private var timer: Timer?
-    private var duration: TimeInterval
-    private var remainingTime: TimeInterval
+    private var duration: TimeInterval = 30
     private var isPaused: Bool = false
 
     var onTick: ((TimeInterval) -> Void)?
     var onFinish: (() -> Void)?
 
     // MARK: - Initialization
-    init(duration: TimeInterval) {
-        self.duration = duration
+    init() {
         self.remainingTime = duration
     }
 
@@ -36,6 +38,12 @@ class TimeManager {
             userInfo: nil,
             repeats: true
         )
+    }
+
+    func restart() {
+        stop()
+        remainingTime = duration
+        start()
     }
 
     /// Pauses the timer

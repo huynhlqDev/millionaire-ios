@@ -39,8 +39,10 @@ struct PhoneAFriendView: View {
                                     .foregroundStyle(.black)
                                     .padding()
                             }
-                        }
+                        }.listRowBackground(Color.white)
                     }
+                    .scrollIndicators(.hidden)
+                    .scrollContentBackground(.hidden)
                 }
             }
             .frame(width: screenWidth*0.8, height: screenHeight*0.4)

@@ -1,92 +1,1002 @@
 [
-    {
-        "level": "Easy",
-        "question": "Đất nước nào có thủ đô là Hà Nội?",
-        "answers": ["Việt Nam", "Lào", "Campuchia", "Thái Lan"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Easy",
-        "question": "Con vật nào có thể bay?",
-        "answers": ["Chim", "Hổ", "Mèo", "Cá"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Easy",
-        "question": "Màu của lá cây thường là gì?",
-        "answers": ["Xanh", "Đỏ", "Vàng", "Cam"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Easy",
-        "question": "Ai là người sáng lập ra Facebook?",
-        "answers": ["Mark Zuckerberg", "Bill Gates", "Elon Musk", "Steve Jobs"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Medium",
-        "question": "Đơn vị đo lường sức mạnh điện là gì?",
-        "answers": ["Watt", "Kilowatt", "Volt", "Ampere"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Medium",
-        "question": "Tác giả của tác phẩm 'Chiến tranh và Hòa bình' là ai?",
-        "answers": ["Leo Tolstoy", "Fyodor Dostoevsky", "Anton Chekhov", "Maxim Gorky"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Medium",
-        "question": "Nước nào có diện tích lớn nhất thế giới?",
-        "answers": ["Nga", "Canada", "Mỹ", "Trung Quốc"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Medium",
-        "question": "Quốc gia nào có đội bóng đá nổi tiếng 'La Roja'?",
-        "answers": ["Tây Ban Nha", "Argentina", "Brazil", "Pháp"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Medium",
-        "question": "Người đầu tiên bước lên Mặt Trăng là ai?",
-        "answers": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Ai là người sáng lập ra lý thuyết tương đối trong vật lý?",
-        "answers": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Chất nào có công thức hóa học là H2O?",
-        "answers": ["Nước", "Oxy", "Khí Nitơ", "Ammonia"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Bức tranh 'Mona Lisa' được vẽ bởi họa sĩ nào?",
-        "answers": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Châu lục nào có diện tích nhỏ nhất?",
-        "answers": ["Úc", "Châu Á", "Châu Âu", "Châu Phi"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Tác giả của cuốn tiểu thuyết 'Đại chiến và hòa bình' là ai?",
-        "answers": ["Leo Tolstoy", "Hemingway", "Mark Twain", "Homer"],
-        "correctAnswer": 0
-    },
-    {
-        "level": "Hard",
-        "question": "Ai là người phát minh ra điện thoại?",
-        "answers": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Albert Einstein"],
-        "correctAnswer": 0
-    }
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Biển Đông tiếp giáp với nước nào sau đây?",
+    "options": [
+      "Trung Quốc",
+      "Lào",
+      "Thái Lan",
+      "Cam-pu-chia"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chùa Một Cột nằm ở đâu?",
+    "options": [
+      "Huế",
+      "Hà Nội",
+      "Hội An",
+      "TP.HCM"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Tác giả Truyện Kiều là ai?",
+    "options": [
+      "Nguyễn Trãi",
+      "Nguyễn Du",
+      "Tố Hữu",
+      "Xuân Diệu"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Quốc kỳ Việt Nam có màu gì?",
+    "options": [
+      "Xanh",
+      "Đỏ",
+      "Vàng",
+      "Trắng"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Loài vật nào sau đây là động vật có vú?",
+    "options": [
+      "Chim cánh cụt",
+      "Cá heo",
+      "Cá mập",
+      "Ếch"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Chữ Quốc ngữ được tạo ra từ đâu?",
+    "options": [
+      "Pháp",
+      "La Mã",
+      "Bồ Đào Nha",
+      "Trung Quốc"
+    ],
+    "correctIndex": 2
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Việt Nam có bao nhiêu tỉnh/thành phố?",
+    "options": [
+      "63",
+      "64",
+      "61",
+      "62"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Trái đất quay quanh gì?",
+    "options": [
+      "Mặt trăng",
+      "Mặt trời",
+      "Sao Hỏa",
+      "Sao Kim"
+    ],
+    "correctIndex": 1
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Thủ đô của Việt Nam là gì?",
+    "options": [
+      "Hà Nội",
+      "Hồ Chí Minh",
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "correctIndex": 0
+  },
+  {
+    "text": "Năm mới Âm lịch còn gọi là gì?",
+    "options": [
+      "Trung Thu",
+      "Tết Nguyên Đán",
+      "Giáng Sinh",
+      "Tết Trung Nguyên"
+    ],
+    "correctIndex": 1
+  }
 ]

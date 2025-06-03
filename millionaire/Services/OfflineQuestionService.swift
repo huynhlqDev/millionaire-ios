@@ -8,6 +8,7 @@
 import Foundation
 
 class OfflineQuestionService: QuestionService {
+    static let shared = OfflineQuestionService()
     private let fileName: String
 
     init(fileName: String = "Questions") {
@@ -23,7 +24,10 @@ class OfflineQuestionService: QuestionService {
         do {
             let data = try Data(contentsOf: url)
             let questions = try JSONDecoder().decode([Question].self, from: data)
-            completion(.success(questions))
+
+            // Get 15 random question
+            let questionsWithCount =  Array(questions.shuffled().prefix(15))
+            completion(.success(questionsWithCount))
         } catch {
             completion(.failure(error))
         }

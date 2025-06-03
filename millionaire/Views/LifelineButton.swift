@@ -24,6 +24,17 @@ enum LifelineType: String, CaseIterable, Identifiable {
             return "phone_friend"
         }
     }
+
+    var label: String {
+        switch self {
+        case .fiftyFifty:
+            return "50/50"
+        case .askAudience:
+            return "Hỏi ý kiến khán giả"
+        case .phoneAFriend:
+            return "gọi điện thoại cho người thân"
+        }
+    }
 }
 
 struct LifelineButton: View {

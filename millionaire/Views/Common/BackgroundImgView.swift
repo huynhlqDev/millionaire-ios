@@ -16,14 +16,17 @@ struct BackgroundImgView: View {
     var img: BackgroundImg
     
     var body: some View {
-        Image(img.rawValue)
-            .resizable()
-            .scaledToFill()
-            .frame(
-                width: UIScreen.main.bounds.size.width,
-                height: UIScreen.main.bounds.size.height
-            )
-            .clipped()
-            .ignoresSafeArea()
+        ZStack {
+            Image(img.rawValue)
+                .resizable()
+                .scaledToFill()
+                .frame(
+                    width: UIScreen.main.bounds.size.width,
+                    height: UIScreen.main.bounds.size.height
+                )
+                .clipped()
+                .ignoresSafeArea()
+            Color.black.edgesIgnoringSafeArea(.all).opacity(0.15)
+        }
     }
 }

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct CountdownCircleView: View {
+    var remainingTime: TimeInterval
     let totalTime: TimeInterval = 30
-    let circleSize: CGFloat
-    @State private var remainingTime: TimeInterval = 30
-    @State private var timer: Timer? = nil
 
     var progress: CGFloat {
         CGFloat(remainingTime / totalTime)
@@ -38,10 +36,6 @@ struct CountdownCircleView: View {
                 .font(.title)
                 .bold()
         }
-        .frame(width: circleSize, height: circleSize)
-        .onAppear {
-            startCountdown()
-        }
     }
 
     var timerColor: Color {
@@ -54,20 +48,8 @@ struct CountdownCircleView: View {
             return .green
         }
     }
-
-    func startCountdown() {
-        remainingTime = totalTime
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { t in
-            if remainingTime > 0 {
-                remainingTime -= 1
-            } else {
-                t.invalidate()
-            }
-        }
-    }
 }
 
 #Preview {
-    CountdownCircleView(circleSize: 100)
+    CountdownCircleView(remainingTime: 30)
 }
